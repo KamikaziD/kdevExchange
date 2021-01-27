@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
-import './App.css';
 import Card from './card.component/card.component';
 import { SearchBox } from './search-box/search-box.component';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -19,8 +19,6 @@ class App extends Component {
       searchfield: '1'
     };
   }
-
-  
 
   componentDidMount() {
       fetch('https://v6.exchangerate-api.com/v6/07eecea1d952623a35907a42/latest/EUR')
@@ -42,7 +40,13 @@ class App extends Component {
         <h3>CONVERT EURO TO ZAR - ENTER EURO AMOUNT</h3>
         <SearchBox placeholder='1' handleChange={this.handleChange} />
         <div className='body'>
-          <Card rate={euro.conversion_rates.ZAR} update={euro.time_last_update_utc} next={euro.time_next_update_utc} excode={euro.base_code} exValue={searchfield}/>
+          <Card 
+            rate={euro.conversion_rates.ZAR}
+            update={euro.time_last_update_utc}
+            next={euro.time_next_update_utc}
+            excode={euro.base_code}
+            exValue={searchfield}
+          />
         </div>
       </div>
     );
