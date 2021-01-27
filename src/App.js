@@ -39,6 +39,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='header'>KDev Exchange Rates</h1>
+        <h3>CONVERT EURO TO ZAR - ENTER EURO AMOUNT</h3>
         <SearchBox placeholder='1' handleChange={this.handleChange} />
         <div className='body'>
           <Card rate={euro.conversion_rates.ZAR} update={euro.time_last_update_utc} next={euro.time_next_update_utc} excode={euro.base_code} exValue={searchfield}/>
