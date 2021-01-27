@@ -16,6 +16,14 @@ class App extends Component {
             ZAR: '----'
           }
       },
+      dollar: {
+        time_last_update_utc: "LOADING",
+        time_next_update_utc: "LOADING",
+        base_code: "EUR",
+        conversion_rates: { 
+          ZAR: '----'
+        }
+    },
       searchfield: '1'
     };
   }
@@ -25,6 +33,10 @@ class App extends Component {
     .then(response => response.json())
     .then(exchrate => this.setState({ euro: exchrate }));
     
+    fetch('https://v6.exchangerate-api.com/v6/07eecea1d952623a35907a42/latest/USD')
+    .then(response => response.json())
+    .then(exchrate => this.setState({ dollar: exchrate }));
+
   }
 
   handleChange = (e) => {
@@ -32,12 +44,12 @@ class App extends Component {
   }
 
   render() {
-    const { euro, searchfield } = this.state;
+    const { euro, dollar, searchfield } = this.state;
 
     return (
       <div className='App'>
         <h1 className='header'>KDev Exchange Rates</h1>
-        <h3>CONVERT EURO TO ZAR - ENTER EURO AMOUNT</h3>
+        <h3>CONVERT EURO/US DOLLAR TO ZAR - ENTER AMOUNT TO CONVERT</h3>
         <SearchBox placeholder='1' handleChange={this.handleChange} />
         <div className='body'>
           <Card 
@@ -45,6 +57,13 @@ class App extends Component {
             update={euro.time_last_update_utc}
             next={euro.time_next_update_utc}
             excode={euro.base_code}
+            exValue={searchfield}
+          />
+          <Card 
+            rate={dollar.conversion_rates.ZAR}
+            update={dollar.time_last_update_utc}
+            next={dollar.time_next_update_utc}
+            excode={dollar.base_code}
             exValue={searchfield}
           />
         </div>
