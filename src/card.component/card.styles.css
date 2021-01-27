@@ -2,7 +2,8 @@
     display: flexbox;
     justify-content: center;
     align-content: center;
-    width: 300px;
+    max-width: 300px;
+    min-width: 200px;
     border-radius: 10px;
     background-color: greenyellow;
     padding: 20px;

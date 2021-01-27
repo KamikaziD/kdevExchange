@@ -59,6 +59,7 @@ class App extends Component {
             excode={euro.base_code}
             exValue={searchfield}
           />
+          <div>
           <Card 
             rate={dollar.conversion_rates.ZAR}
             update={dollar.time_last_update_utc}
@@ -66,6 +67,7 @@ class App extends Component {
             excode={dollar.base_code}
             exValue={searchfield}
           />
+          </div>
         </div>
       </div>
     );
