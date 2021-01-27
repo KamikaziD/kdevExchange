@@ -1,0 +1,26 @@
+.container {
+    display: flexbox;
+    justify-content: center;
+    align-content: center;
+    width: 300px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    padding: 20px;
+    color: darkblue;
+    margin: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.container:hover {
+    background-color: aqua;
+    cursor: pointer;
+    color: black;
+    border: 0.5px solid black;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.25);
+   
+}
+
+.inputNumber {
+    border-radius: 5px;
+}
