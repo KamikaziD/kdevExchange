@@ -19,7 +19,7 @@ class App extends Component {
       dollar: {
         time_last_update_utc: "LOADING",
         time_next_update_utc: "LOADING",
-        base_code: "EUR",
+        base_code: "USD",
         conversion_rates: { 
           ZAR: '----'
         }
@@ -29,14 +29,18 @@ class App extends Component {
   }
 
   componentDidMount() {
+    try {
       fetch('https://v6.exchangerate-api.com/v6/07eecea1d952623a35907a42/latest/EUR')
-    .then(response => response.json())
-    .then(exchrate => this.setState({ euro: exchrate }));
-    
-    fetch('https://v6.exchangerate-api.com/v6/07eecea1d952623a35907a42/latest/USD')
-    .then(response => response.json())
-    .then(exchrate => this.setState({ dollar: exchrate }));
-
+      .then(response => response.json())
+      .then(exchrate => this.setState({ euro: exchrate }));
+      
+      fetch('https://v6.exchangerate-api.com/v6/07eecea1d952623a35907a42/latest/USD')
+      .then(response => response.json())
+      .then(exchrate => this.setState({ dollar: exchrate }));
+  
+    } catch (err) {
+      alert('There must be a problem...', err)
+    }
   }
 
   handleChange = (e) => {
